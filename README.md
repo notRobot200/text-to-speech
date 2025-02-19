@@ -1,10 +1,10 @@
 # ElevenLabs TTS App
 
-Overview:
+📌 Overview:
 
 This project is a Text-to-Speech (TTS) application powered by ElevenLabs. It allows users to convert text into high-quality speech using various voice options. Users can input text, select a voice, and adjust settings to generate realistic audio.
 
-Features:
+✨ Features:
 
 🎤 Multiple Voice Selection: Choose from a variety of voices.
 

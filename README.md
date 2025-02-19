@@ -18,7 +18,7 @@ This project is a Text-to-Speech (TTS) application powered by ElevenLabs. It all
 
 ## 📚 Model Used:
 
-This project utilizes ElevenLabs' advanced TTS model, known for its high-quality and realistic speech synthesis.
+This project utilizes ElevenLabs' eleven_multilingual_v2 model, known for its high-quality and realistic speech synthesis.
 
 ## 📝 License:
 

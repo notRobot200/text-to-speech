@@ -6,15 +6,15 @@ This project is a Text-to-Speech (TTS) application powered by ElevenLabs. It all
 
 ## ✨ Features:
 
-- Multiple Voice Selection: Choose from a variety of voices 🎤.
+- Multiple Voice Selection: Choose from a variety of voices.
 
-- Audio Preview: Listen to a short preview before generating full audio 🔊.
+- Audio Preview: Listen to a short preview before generating full audio.
 
-- Customizable Settings: Adjust stability and clarity for more natural speech 🎚.
+- Customizable Settings: Adjust stability and clarity for more natural speech.
 
-- Downloadable Output: Save the generated audio as an MP3 file 💾.
+- Downloadable Output: Save the generated audio as an MP3 file.
 
-- Multi-Language Support: Automatic language detection for diverse users 🌍.
+- Multi-Language Support: Automatic language detection for diverse users.
 
 ## 📚 Model Used:
 

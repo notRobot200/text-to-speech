@@ -20,6 +20,10 @@ This project is a Text-to-Speech (TTS) application powered by ElevenLabs. It all
 
 This project utilizes ElevenLabs' eleven_multilingual_v2 model, known for its high-quality and realistic speech synthesis.
 
+## 🔧 Deployment:
+
+This application is deployed on Streamlit, a Python-based framework for building interactive web applications.
+
 ## 📝 License:
 
 This project is licensed under the MIT License.

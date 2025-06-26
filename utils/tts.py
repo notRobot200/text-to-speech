@@ -41,14 +41,9 @@ def text_to_speech(text, voice_id, stability=0.5, clarity=0.75):
         logger.info(f"Successfully converted {len(text)} characters to {len(audio_data)} bytes of audio")
         return audio_data
 
-    # except Exception as e:
-    #     logger.error(f"Error in text-to-speech conversion: {e}")
-    #     return None
-
     except Exception as e:
-        if hasattr(e, 'response') and e.response.status_code == 401:
-            logger.error("Unauthorized - check your API key or subscription level.")
         logger.error(f"Error in text-to-speech conversion: {e}")
+        return None
 
 def generate_preview(voice_id):
     """

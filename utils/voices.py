@@ -18,12 +18,19 @@ def get_available_voices():
     try:
         client = ElevenLabs(api_key=ELEVEN_API_KEY)
         voice_list = client.voices.get_all()
-        logger.debug(f"Raw voices: {voice_list}")
-        # Fix jika voice ternyata tuple
-        voices_dict = {
-            f"{v[0]}": v[1] if isinstance(v, tuple) else f"{v.name} ({v.labels.get('accent', 'Standard')})": v.voice_id
-            for v in voice_list
-        }
+        voices_dict = {}
+        for v in voice_list:
+    try:
+        if isinstance(v, tuple):
+            voice_name = f"{v[0]}"
+            voice_id = v[1]
+        else:
+            voice_name = f"{v.name} ({v.labels.get('accent', 'Standard')})"
+            voice_id = v.voice_id
+        voices_dict[voice_name] = voice_id
+    except Exception as e:
+        logger.warning(f"Skipping invalid voice entry {v}: {e}")
+
         
         # voice_list = client.voices.get_all()
         # voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id

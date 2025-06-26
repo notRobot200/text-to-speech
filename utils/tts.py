@@ -46,9 +46,9 @@ def text_to_speech(text, voice_id, stability=0.5, clarity=0.75):
     #     return None
 
     except Exception as e:
-    if hasattr(e, 'response') and e.response.status_code == 401:
-        logger.error("Unauthorized - check your API key or subscription level.")
-    logger.error(f"Error in text-to-speech conversion: {e}")
+        if hasattr(e, 'response') and e.response.status_code == 401:
+            logger.error("Unauthorized - check your API key or subscription level.")
+        logger.error(f"Error in text-to-speech conversion: {e}")
 
 def generate_preview(voice_id):
     """

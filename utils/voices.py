@@ -16,25 +16,10 @@ def get_available_voices():
         dict: Dictionary containing {voice_name: voice_id}
     """
     try:
-        client = ElevenLabs(api_key=ELEVEN_API_KEY)
+        client = ElevenLabs(api_key=ELEVEN_API_KEY)  
         voice_list = client.voices.get_all()
-        voices_dict = {}
-        for v in voice_list:
-            try:
-                if isinstance(v, tuple):
-                    voice_name = f"{v[0]}"
-                    voice_id = v[1]
-                else:
-                    voice_name = f"{v.name} ({v.labels.get('accent', 'Standard')})"
-                    voice_id = v.voice_id
-                voices_dict[voice_name] = voice_id
-            except Exception as e:
-                logger.warning(f"Skipping invalid voice entry {v}: {e}")
-
-        
-        # voice_list = client.voices.get_all()
-        # voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
-        #                for voice in voice_list}
+        voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
+                       for voice in voice_list}
 
         if voices_dict:
             logger.info(f"Successfully fetched {len(voices_dict)} voices from API")

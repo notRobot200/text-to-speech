@@ -143,21 +143,34 @@ def render_conversion_section(text_input, voice_id, stability, clarity):
         else:
             st.warning("⚠️ Please enter text first.")
 
+# def render_main_content():
+#     """
+#     Displays the main content of the application.
+#     """
+#     try:
+#         # Voice selector
+#         voice_id = render_voice_selector()
+
+#         # Text input and settings
+#         text_input, stability, clarity = render_text_input()
+
+#         # Conversion section
+#         render_conversion_section(text_input, voice_id, stability, clarity)
+
+#     except Exception as e:
+#         st.error(f"⚠️ An error occurred: {str(e)}")
+#         logger.error(f"Application error: {e}")
+#         st.info("Check your .env file and ensure the API key is valid and active.")
+
 def render_main_content():
-    """
-    Displays the main content of the application.
-    """
-    try:
-        # Voice selector
-        voice_id = render_voice_selector()
+    voices = get_available_voices()
 
-        # Text input and settings
-        text_input, stability, clarity = render_text_input()
+    selected_voice_label = st.selectbox("Select Voice:", list(voices.keys()))
+    selected_voice_id = voices[selected_voice_label]
 
-        # Conversion section
-        render_conversion_section(text_input, voice_id, stability, clarity)
-
-    except Exception as e:
-        st.error(f"⚠️ An error occurred: {str(e)}")
-        logger.error(f"Application error: {e}")
-        st.info("Check your .env file and ensure the API key is valid and active.")
+    if st.button("🔊 Preview Voice", type="primary"):
+        audio_data = generate_preview(selected_voice_id)
+        if audio_data:
+            st.audio(audio_data, format="audio/mp3")
+        else:
+            st.error("Failed to generate preview.")

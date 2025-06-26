@@ -18,8 +18,16 @@ def get_available_voices():
     try:
         client = ElevenLabs(api_key=ELEVEN_API_KEY)
         voice_list = client.voices.get_all()
-        voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
-                       for voice in voice_list}
+        logger.debug(f"Raw voices: {voice_list}")
+        # Fix jika voice ternyata tuple
+        voices_dict = {
+            f"{v[0]}": v[1] if isinstance(v, tuple) else f"{v.name} ({v.labels.get('accent', 'Standard')})": v.voice_id
+            for v in voice_list
+        }
+        
+        # voice_list = client.voices.get_all()
+        # voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
+        #                for voice in voice_list}
 
         if voices_dict:
             logger.info(f"Successfully fetched {len(voices_dict)} voices from API")

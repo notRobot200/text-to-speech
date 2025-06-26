@@ -20,16 +20,16 @@ def get_available_voices():
         voice_list = client.voices.get_all()
         voices_dict = {}
         for v in voice_list:
-    try:
-        if isinstance(v, tuple):
-            voice_name = f"{v[0]}"
-            voice_id = v[1]
-        else:
-            voice_name = f"{v.name} ({v.labels.get('accent', 'Standard')})"
-            voice_id = v.voice_id
-        voices_dict[voice_name] = voice_id
-    except Exception as e:
-        logger.warning(f"Skipping invalid voice entry {v}: {e}")
+            try:
+                if isinstance(v, tuple):
+                    voice_name = f"{v[0]}"
+                    voice_id = v[1]
+                else:
+                    voice_name = f"{v.name} ({v.labels.get('accent', 'Standard')})"
+                    voice_id = v.voice_id
+                voices_dict[voice_name] = voice_id
+            except Exception as e:
+                logger.warning(f"Skipping invalid voice entry {v}: {e}")
 
         
         # voice_list = client.voices.get_all()

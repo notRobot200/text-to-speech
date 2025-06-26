@@ -15,34 +15,14 @@ def get_available_voices():
     Returns:
         dict: Dictionary containing {voice_name: voice_id}
     """
-    # try:
-    #     client = ElevenLabs(api_key=ELEVEN_API_KEY)
-    #     voice_list = client.voices.get_all()
-    #     voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
-    #                    for voice in voice_list}
-
-    #     if voices_dict:
-    #         logger.info(f"Successfully fetched {len(voices_dict)} voices from API")
-    #         return voices_dict
-    #     else:
-    #         logger.warning("API returned empty voices list, using default voices")
-    #         return DEFAULT_VOICES
-    # except Exception as e:
-    #     logger.error(f"Failed to fetch voices: {e}")
-    #     logger.info("Using default voices list as fallback")
-    #     return DEFAULT_VOICES
     try:
         client = ElevenLabs(api_key=ELEVEN_API_KEY)
         voice_list = client.voices.get_all()
-        logger.info(f"Voice list raw: {voice_list}")
-
-        voices_dict = {
-            f"{v[1]} ({(v[2] or {}).get('accent', 'Standard')})": v[0]
-            for v in voice_list
-        }
+        voices_dict = {f"{voice.name} ({voice.labels.get('accent', 'Standard')})": voice.voice_id
+                       for voice in voice_list}
 
         if voices_dict:
-            logger.info(f"Fetched {len(voices_dict)} voices from API")
+            logger.info(f"Successfully fetched {len(voices_dict)} voices from API")
             return voices_dict
         else:
             logger.warning("API returned empty voices list, using default voices")

@@ -7,10 +7,12 @@ from dotenv import load_dotenv
 # Load environment variables
 load_dotenv()
 
-# API Configuration
-ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
-if not ELEVEN_API_KEY:
-    raise ValueError("ELEVEN_API_KEY not found. Ensure the variable is available in the .env file.")
+# # API Configuration
+# ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
+# if not ELEVEN_API_KEY:
+#     raise ValueError("ELEVEN_API_KEY not found. Ensure the variable is available in the .env file.")
+
+ELEVEN_API_KEY = "sk_395b778df80df32b68fe5ab46d6254187ee77197aca61544"
 
 # Default voices list
 DEFAULT_VOICES = {

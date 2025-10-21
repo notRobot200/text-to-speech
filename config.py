@@ -1,18 +1,13 @@
 """
 Configuration and constants for the ElevenLabs TTS application.
 """
-import os
-from dotenv import load_dotenv
+import streamlit as st
 
-# Load environment variables
-load_dotenv()
+# Ambil API key dari Streamlit secrets
+ELEVEN_API_KEY = st.secrets.get("ELEVEN_API_KEY")
 
-# # API Configuration
-# ELEVEN_API_KEY = os.getenv("ELEVEN_API_KEY")
-# if not ELEVEN_API_KEY:
-#     raise ValueError("ELEVEN_API_KEY not found. Ensure the variable is available in the .env file.")
-
-ELEVEN_API_KEY = "sk_395b778df80df32b68fe5ab46d6254187ee77197aca61544"
+if not ELEVEN_API_KEY:
+    raise ValueError("ELEVEN_API_KEY tidak ditemukan di Streamlit secrets.")
 
 # Default voices list
 DEFAULT_VOICES = {

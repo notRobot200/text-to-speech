@@ -4,7 +4,7 @@ Functions for managing the list of voices from the ElevenLabs API.
 import streamlit as st
 from utils.logger import logger
 from config import DEFAULT_VOICES
-from tts import get_voices  
+from utils.tts import get_voices  
 
 @st.cache_data(ttl=3600)
 def get_available_voices():

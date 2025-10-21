@@ -16,7 +16,7 @@ def get_voices():
     """
     try:
         client = ElevenLabs(api_key=ELEVEN_API_KEY)
-        voices_response = client.voices.list()  # SDK terbaru mengembalikan list of dict
+        voices_response = client.voices.get_all()
         voices_list = []
 
         for v in voices_response:
